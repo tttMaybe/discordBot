@@ -1,7 +1,7 @@
 import discord
 import os
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from bot_client import BotClient
 
 load_dotenv(dotenv_path="build/.env")
