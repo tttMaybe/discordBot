@@ -1,4 +1,4 @@
-PYTHON = myenv/bin/python
+PYTHON = build/myenv/bin/python
 
 run:
 	@echo "Starting Discord bot using existing venv..."

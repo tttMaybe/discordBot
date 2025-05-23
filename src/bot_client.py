@@ -8,7 +8,5 @@ class BotClient(discord.Client):
         if message.author == self.user:
             return
 
-        print(f'Message from {message.author}: {message.content}')
-
         if message.content.startswith('!ping'):
             await message.channel.send('Pong!')
