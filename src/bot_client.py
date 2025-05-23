@@ -9,4 +9,4 @@ class BotClient(discord.Client):
             return
 
         if message.content.startswith('!ping'):
-            await message.channel.send('Pong!')
+            await message.channel.send('pong')
