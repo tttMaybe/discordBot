@@ -1,4 +1,5 @@
 import discord
+from memes import get_reddit_cat_url
 
 class BotClient(discord.Client):
     async def on_ready(self):
@@ -8,5 +9,6 @@ class BotClient(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content.startswith('!ping'):
-            await message.channel.send('pong')
+        if message.content.startswith("!cat"):
+            response = await get_reddit_cat_url()
+            await message.channel.send(response)
