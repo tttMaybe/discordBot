@@ -1,14 +1,42 @@
 import discord
-from memes import get_reddit_cat_url
+from memes import get_reddit_image_url
+from time_commands import city_time
 
 class BotClient(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
     async def on_message(self, message):
-        if message.author == self.user:
+        if message.author == self.user or len(message.content) > 100:
             return
+        
+        command_parts = message.content[1:].split(' ')
+        command_name = command_parts[0].lower()
+        
 
-        if message.content.startswith("!cat"):
-            response = await get_reddit_cat_url()
-            await message.channel.send(response)
+        match command_name:
+            case "cat":
+                if len(command_parts) > 1:
+                    return
+                response = await get_reddit_image_url("cats")
+                await message.channel.send(response)
+            case "fun":
+                if len(command_parts) > 1:
+                    return
+                response = await get_reddit_image_url("FunnyAnimals")
+                await message.channel.send(response)
+            case "time":
+                if len(command_parts) > 1:
+                    return
+                response = await city_time()
+                await message.channel.send(response)
+            case "pfp":
+                if len(command_parts) > 2:
+                    return
+                if message.mentions:
+                    target_user = message.mentions[0]
+                else:
+                    target_user = message.author
+                await message.channel.send(target_user.display_avatar.url)
+            case _:
+                pass
