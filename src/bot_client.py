@@ -25,6 +25,11 @@ class BotClient(discord.Client):
                     return
                 response = await get_reddit_image_url("FunnyAnimals")
                 await message.channel.send(response)
+            case "еж":
+                if len(command_parts) > 1:
+                    return
+                response = await get_reddit_image_url("Hedgehog")
+                await message.channel.send(response)
             case "time":
                 if len(command_parts) > 1:
                     return

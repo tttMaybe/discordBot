@@ -8,7 +8,7 @@ async def city_time():
 
     utc_now = datetime.datetime.now(pytz.utc)
 
-    time_format = "%H:%M %p"
+    time_format = "%H:%M"
     
     vladivostok_time = utc_now.astimezone(tz_vladivostok).strftime(time_format)
     tbilisi_time = utc_now.astimezone(tz_tbilisi).strftime(time_format)
