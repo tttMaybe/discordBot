@@ -28,7 +28,9 @@ class BotClient(discord.Client):
             case "еж":
                 if len(command_parts) > 1:
                     return
-                response = await get_reddit_image_url("Hedgehog")
+                response = await get_reddit_image_url("Hedgehogs")
+                while "65c1eqlnyp3f1" in response:
+                    response = await get_reddit_image_url("Hedgehogs")
                 await message.channel.send(response)
             case "time":
                 if len(command_parts) > 1:
